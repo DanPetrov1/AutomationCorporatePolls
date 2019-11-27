@@ -10,4 +10,5 @@ public interface ContactInformationDAO {
     List<ContactInformation> getAll() throws SQLException;
     void update(ContactInformation contactInformation) throws SQLException;
     void remove(ContactInformation contactInformation) throws SQLException;
+    ContactInformation findByUserId(int id);
 }

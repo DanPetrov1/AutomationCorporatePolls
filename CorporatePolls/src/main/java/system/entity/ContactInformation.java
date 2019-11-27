@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class ContactInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idContact;
+    @Column(name = "id_contact")
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -18,15 +19,20 @@ public class ContactInformation {
     @Column(name = "position")
     private String position;
 
+    @Column(name = "number_of_polls")
+    private int numberOfPolls;
+
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
-    @JoinColumn (name="id_user")
+    @JoinColumn (name="users_id")
     private User user;
 
-    public int getIdContact() {
-        return idContact;
+    public int getNumberOfPolls() { return numberOfPolls; }
+    public void setNumberOfPolls(int numberOfPolls) { this.numberOfPolls = numberOfPolls; }
+    public int getId() {
+        return id;
     }
-    public void setIdContact(int idContact) {
-        this.idContact = idContact;
+    public void setId(int idContact) {
+        this.id = idContact;
     }
     public String getName() {
         return name;
@@ -50,29 +56,32 @@ public class ContactInformation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactInformation that = (ContactInformation) o;
-        return idContact == that.idContact &&
+        return id == that.id &&
                 name.equals(that.name) &&
                 email.equals(that.email) &&
                 position.equals(that.position) &&
-                user.equals(that.user);
+                user.equals(that.user) &&
+                numberOfPolls == that.numberOfPolls;
     }
 
     @Override
     public int hashCode() {
-        int result = idContact;
+        int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (position != null ? position.hashCode() : 0);
+        result = 31 * result + numberOfPolls;
         return result;
     }
 
     @Override
     public String toString() {
         return "ContactInformation{" +
-                "idContact=" + idContact +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", position='" + position + '\'' +
+                ", numberOfPolls=" + numberOfPolls +
                 ", user=" + user +
                 '}';
     }

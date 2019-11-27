@@ -10,4 +10,5 @@ public interface UserDAO {
     List<User> getUser() throws SQLException;
     void update(User user) throws SQLException;
     void remove(User user) throws SQLException;
+    User findUserById(int id);
 }

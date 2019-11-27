@@ -40,4 +40,14 @@ public class UserService extends SessionUtil implements UserDAO {
         session.delete(user);
         closeTransactionSession();
     }
+
+    public User findUserById(int id) {
+        openTransactionSession();
+        String sql = "SELECT * FROM users WHERE id =" + id;
+        Session session = getSession();
+        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        List<User> userList = query.list();
+        closeTransactionSession();
+        return userList.get(0);
+    }
 }

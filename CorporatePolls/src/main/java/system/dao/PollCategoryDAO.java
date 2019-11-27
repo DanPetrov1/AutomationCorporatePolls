@@ -10,4 +10,5 @@ public interface PollCategoryDAO {
     List<PollCategory> getAll() throws SQLException;
     void update(PollCategory pollCategory) throws SQLException;
     void remove(PollCategory pollCategory) throws SQLException;
+    PollCategory findByCategoryName(String text);
 }

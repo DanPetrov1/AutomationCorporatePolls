@@ -40,4 +40,18 @@ public class ContactInformationService extends SessionUtil implements ContactInf
         session.delete(contactInformation);
         closeTransactionSession();
     }
+
+    public ContactInformation findByUserId(int id) {
+        openTransactionSession();
+        String sql = "SELECT * FROM contactinformation WHERE users_id=" + id;
+        Session session = getSession();
+        Query query = session.createSQLQuery(sql).addEntity(ContactInformation.class);
+        List<ContactInformation> contactInformationList = query.list();
+        closeTransactionSession();
+        if (contactInformationList.size() > 0) {
+            return contactInformationList.get(0);
+        } else  {
+            return null;
+        }
+    }
 }

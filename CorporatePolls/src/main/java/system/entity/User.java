@@ -18,7 +18,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
-
     public int getId() {
         return id;
     }
@@ -51,7 +50,6 @@ public class User {
 
         User that = (User) o;
 
-        if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;

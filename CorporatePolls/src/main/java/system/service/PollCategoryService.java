@@ -40,4 +40,18 @@ public class PollCategoryService extends SessionUtil implements PollCategoryDAO 
         session.delete(pollCategory);
         closeTransactionSession();
     }
+
+    public PollCategory findByCategoryName(String text) {
+        openTransactionSession();
+        String sql = "SELECT * FROM category WHERE name=" + text;
+        Session session = getSession();
+        Query query = session.createSQLQuery(sql).addEntity(PollCategory.class);
+        List<PollCategory> pollCategoryList = query.list();
+        closeTransactionSession();
+        if (pollCategoryList.size() > 0) {
+            return pollCategoryList.get(0);
+        } else  {
+            return null;
+        }
+    }
 }

@@ -19,8 +19,8 @@ public class Poll {
     private int maxResult;
 
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
-    @JoinColumn (name="id_compiler")
-    private Compiler compiler;
+    @JoinColumn (name="id_contactinformation")
+    private ContactInformation contactInformation;
 
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn (name="id_category")
@@ -34,10 +34,10 @@ public class Poll {
     public void setDescription(String description) { this.description = description; }
     public int getMaxResult() { return maxResult; }
     public void setMaxResult(int maxResult) { this.maxResult = maxResult; }
-    public Compiler getCompiler() { return compiler; }
-    public void setCompiler(Compiler compiler) { this.compiler = compiler; }
     public PollCategory getPollCategory() { return pollCategory; }
     public void setPollCategory(PollCategory pollCategory) { this.pollCategory = pollCategory; }
+    public ContactInformation getContactInformation() { return contactInformation; }
+    public void setContactInformation(ContactInformation contactInformation) { this.contactInformation = contactInformation; }
 
     @Override
     public boolean equals(Object o) {
@@ -46,9 +46,9 @@ public class Poll {
         Poll poll = (Poll) o;
         return id == poll.id &&
                 maxResult == poll.maxResult &&
-                name.equals(poll.name) &&
+                name.equals (poll.name) &&
                 description.equals(poll.description) &&
-                compiler.equals(poll.compiler) &&
+                contactInformation.equals(poll.contactInformation) &&
                 pollCategory.equals(poll.pollCategory);
     }
 
@@ -68,7 +68,7 @@ public class Poll {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", maxResult=" + maxResult +
-                ", compiler=" + compiler +
+                ", cotactinformation=" + contactInformation +
                 ", pollCategory=" + pollCategory +
                 '}';
     }

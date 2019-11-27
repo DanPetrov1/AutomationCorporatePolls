@@ -14,7 +14,6 @@
         <property name="format_sql">false</property>
         <property name="use_sql_comments">false</property>
 
-        <mapping class="system.entity.Compiler"></mapping>
         <mapping class="system.entity.ContactInformation"></mapping>
         <mapping class="system.entity.Poll"></mapping>
         <mapping class="system.entity.PollCategory"></mapping>
